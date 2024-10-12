@@ -34,6 +34,17 @@ app.post("/create-user", async (req, res) => {
   }
 });
 
+app.get("/users", async (req, res) => {
+  try {
+    let users = await prisma.users.findMany();
+    return res.status(200).json(users);
+  } catch (e) {
+    return res
+      .status(500)
+      .json({success: false, message: "Internal server error"});
+  }
+});
+
 app.listen(port, () => {
   console.log(`Timezone test app listening on port ${port}`);
 });
