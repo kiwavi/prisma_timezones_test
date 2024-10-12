@@ -28,7 +28,6 @@ app.post("/create-user", async (req, res) => {
       return res.status(200).json({success: true});
     }
   } catch (e) {
-    console.log(e);
     return res
       .status(500)
       .json({success: false, message: "Internal server error"});
